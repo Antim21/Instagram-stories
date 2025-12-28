@@ -1,0 +1,372 @@
+/* Instagram Stories Feature - CSS Styles */
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #fafafa;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.app-container {
+    max-width: 480px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    min-height: 100vh;
+}
+
+/* Header */
+.app-header {
+    padding: 12px 16px;
+    border-bottom: 1px solid #dbdbdb;
+    background-color: #ffffff;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.app-header h1 {
+    font-family: 'Segoe Script', cursive, sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: #262626;
+}
+
+.header-icons {
+    display: flex;
+    gap: 16px;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: #262626;
+}
+
+.icon-btn:hover {
+    opacity: 0.7;
+}
+
+/* Stories Section */
+.stories-section {
+    padding: 10px 0;
+    border-bottom: 1px solid #dbdbdb;
+    background-color: #ffffff;
+}
+
+.stories-container {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 8px 12px;
+    gap: 15px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.stories-container::-webkit-scrollbar {
+    display: none;
+}
+
+.story-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.story-thumbnail {
+    width: 66px;
+    height: 66px;
+    border-radius: 50%;
+    padding: 3px;
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    margin-bottom: 6px;
+}
+
+.story-thumbnail img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ffffff;
+}
+
+.story-name {
+    font-size: 11px;
+    color: #262626;
+    max-width: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+}
+
+/* Feed Section */
+.feed-section {
+    padding-bottom: 20px;
+}
+
+.feed-post {
+    background-color: #ffffff;
+    border-bottom: 1px solid #efefef;
+    margin-bottom: 10px;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    gap: 10px;
+}
+
+.post-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.post-username {
+    font-weight: 600;
+    font-size: 14px;
+    color: #262626;
+}
+
+.post-image {
+    width: 100%;
+}
+
+.post-image img {
+    width: 100%;
+    display: block;
+}
+
+.post-actions {
+    display: flex;
+    gap: 12px;
+    padding: 10px 12px;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 4px;
+}
+
+.action-btn:hover {
+    opacity: 0.7;
+}
+
+.post-caption {
+    padding: 0 12px 12px 12px;
+    font-size: 14px;
+    color: #262626;
+    line-height: 1.4;
+}
+
+/* Story Viewer Overlay */
+.story-viewer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    z-index: 1000;
+    display: none;
+    flex-direction: column;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.story-viewer.active {
+    display: flex;
+    opacity: 1;
+}
+
+.progress-container {
+    display: flex;
+    gap: 4px;
+    padding: 10px 8px 0 8px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1002;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 2px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-bar .progress-fill {
+    height: 100%;
+    width: 0%;
+    background-color: #ffffff;
+    border-radius: 2px;
+}
+
+.progress-fill.animating {
+    animation: progressAnimation 5s linear forwards;
+}
+
+@keyframes progressAnimation {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+.progress-bar.completed .progress-fill {
+    width: 100%;
+    animation: none;
+}
+
+.story-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 12px 10px 12px;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+}
+
+.story-user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.story-user-pic {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #ffffff;
+}
+
+.story-username {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 5px 10px;
+    line-height: 1;
+}
+
+.story-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000000;
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.story-image.loaded {
+    opacity: 1;
+}
+
+.nav-left,
+.nav-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 30%;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.nav-left {
+    left: 0;
+}
+
+.nav-right {
+    right: 0;
+}
+
+/* Loading Spinner */
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1003;
+    display: none;
+}
+
+.loader.show {
+    display: block;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsive */
+@media screen and (min-width: 481px) {
+    .app-container {
+        border-left: 1px solid #dbdbdb;
+        border-right: 1px solid #dbdbdb;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .story-thumbnail {
+        width: 56px;
+        height: 56px;
+    }
+
+    .story-name {
+        font-size: 10px;
+        max-width: 60px;
+    }
+}
