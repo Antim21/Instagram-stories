@@ -4,7 +4,7 @@ A mobile-first Instagram Stories clone built with vanilla HTML, CSS, and JavaScr
 
 ## 🎬 Live Demo
 
-[View Live Demo](https://instagram-stories-features.vercel.app)
+[View Live Demo](https://instagram-stories-tau.vercel.app/)
 
 ## ✨ Features
 
